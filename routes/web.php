@@ -22,3 +22,8 @@ Route::resource('/site_type', 'SiteTypeController')->middleware('auth');
 Route::any('/site', function() {
     echo 'Hola mundo';
 });
+
+
+Route::resource('sites', 'SiteController')->middleware('auth');
+
+Route::resource('comments', 'CommentsController')->middleware('auth');

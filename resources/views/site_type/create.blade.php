@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+<h1>Create Site Type</h1>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="container">
     <form action="{{ route('site_type.store') }}" method="POST">
         @csrf

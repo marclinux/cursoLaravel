@@ -37,6 +37,10 @@ class SiteTypeController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'active' => 'required',
+        ]);
         $tipo = new Site_type();
         $tipo->name = $request->input('name');
         $tipo->active = $request->input('active') ? 1 : 0;
@@ -78,6 +82,10 @@ class SiteTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'active' => 'required',
+        ]);
         $tipo = Site_type::find($id);
         $tipo->name = $request->input('name');
         $tipo->active = $request->input('active') ? 1 : 0;
