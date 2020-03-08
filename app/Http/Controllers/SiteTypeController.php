@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Site_type;
+use Illuminate\Support\Facades\Gate;
 
 class SiteTypeController extends Controller
 {
@@ -14,9 +15,14 @@ class SiteTypeController extends Controller
      */
     public function index()
     {
-        $tipos = Site_type::all();
-        return view('site_type.index')
-                    ->with('tipos', $tipos);
+        if(Gate::allows('users_manage'))
+        {
+            $tipos = Site_type::all();
+            return view('site_type.index')
+                        ->with('tipos', $tipos);
+        }
+        else
+            return abort(401);
     }
 
     /**

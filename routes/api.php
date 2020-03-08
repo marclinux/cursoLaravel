@@ -18,6 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('sites', 'SiteAPIController');
+Route::resource('sites', 'SiteAPIController')->middleware('auth:api');
 
 Route::resource('comments', 'CommentsAPIController');
