@@ -15,7 +15,7 @@
             <tr>
                 <td>{{ $site->name }}</td>
             <td>{{ $site->active }}</td>
-            <td>{{ $site->type_id }}</td>
+            <td>{{ $site->type->name }}</td>
             <td>{{ $site->lat }}</td>
             <td>{{ $site->long }}</td>
                 <td>
