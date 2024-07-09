@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="//unpkg.com/leaflet/dist/leaflet.css" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -57,6 +58,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('comments.index') }}">Comentarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('mapas') }}">Mapas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.roles.index') }}">Roles</a>

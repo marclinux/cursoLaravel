@@ -19,6 +19,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('site_type', 'SiteTypeController')->middleware('auth');
 Route::resource('sites', 'SiteController')->middleware('auth');
 Route::resource('comments', 'CommentsController')->middleware('auth');
+Route::get('mapas', 'MapaController@index')->middleware('auth')->name('mapas');
 
 Route::get('change_password', 'Auth\ChangePasswordController@showChangePasswordForm')->name('auth.change_password');
 Route::patch('change_password', 'Auth\ChangePasswordController@changePassword')->name('auth.change_password');

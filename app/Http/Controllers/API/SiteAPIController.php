@@ -9,6 +9,7 @@ use App\Repositories\SiteRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use App\Consutas;
 
 /**
  * Class SiteController
@@ -32,15 +33,21 @@ class SiteAPIController extends AppBaseController
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
+    public function consulta($id)
     {
-        $sites = $this->siteRepository->all(
-            $request->except(['skip', 'limit']),
-            $request->get('skip'),
-            $request->get('limit')
-        );
-
-        return $this->sendResponse($sites->toArray(), 'Sites retrieved successfully');
+        if($id == 0) {
+            $sites = Site::get(['name', 'long', 'lat']);
+        }
+        else {
+            $sites = Site::where('type_id', $id)->get(['name', 'long', 'lat']);
+        }
+        $arreglo = [];
+        $valor = [];
+        foreach ($sites as $sitio) {
+            $valor = [ 'name' => $sitio->name, 'coords' => ['lng' => $sitio->long, 'lat' => $sitio->lat]];
+            array_push($arreglo, $valor);
+        }
+        return $this->sendResponse($arreglo, 'Sites retrieved successfully');
     }
 
     /**
